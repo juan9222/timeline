@@ -4,6 +4,16 @@
     border: 1px solid #ddd;
   }
   
+  .controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .controls button {
+    margin: 0 5px;
+  }
+  
   .lane {
     display: flex;
     position: relative;

@@ -2,23 +2,39 @@
     position: relative;
     width: 100%;
     border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .controls {
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   
   .controls button {
     margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #4285f4;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .controls button:hover {
+    background-color: #357ae8;
   }
   
   .lane {
     display: flex;
     position: relative;
-    height: 30px;
-    margin: 5px 0;
+    height: 40px;
+    margin: 10px 0;
+    align-items: center;
   }
   
   .event {
@@ -26,19 +42,26 @@
     height: 100%;
     background-color: #4285f4;
     color: #fff;
-    padding: 2px 5px;
-    border-radius: 3px;
+    padding: 5px 10px;
+    border-radius: 4px;
     box-sizing: border-box;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+  }
+  
+  .event:active {
+    cursor: grabbing;
   }
   
   .event input {
     background: transparent;
     border: none;
     color: #fff;
-    width: 100%;
+    width: calc(100% - 20px);
     height: 100%;
     padding: 0;
     margin: 0;

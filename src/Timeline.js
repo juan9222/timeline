@@ -3,7 +3,7 @@ import Draggable from 'react-draggable';
 import './Timeline.css';
 
 const Timeline = ({ events }) => {
-  const [zoom, setZoom] = useState(10);
+  const [zoom, setZoom] = useState(10); // Default zoom level
   const [eventList, setEventList] = useState(events);
 
   const startDate = new Date(eventList[0].start).getTime();
@@ -31,6 +31,10 @@ const Timeline = ({ events }) => {
   const handleDrag = (e, data, event) => {
     const newStartDate = new Date(startDate + (data.x / zoom) * dayInMs);
     const newEndDate = new Date(newStartDate.getTime() + (new Date(event.end).getTime() - new Date(event.start).getTime()));
+
+    if (newStartDate < new Date(eventList[0].start) || newEndDate > new Date(eventList[eventList.length - 1].end)) {
+      return;
+    }
 
     setEventList(eventList.map(ev => ev.id === event.id ? { ...ev, start: newStartDate.toISOString().split('T')[0], end: newEndDate.toISOString().split('T')[0] } : ev));
   };

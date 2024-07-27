@@ -5,6 +5,7 @@ import './Timeline.css';
 const Timeline = ({ events }) => {
   const [zoom, setZoom] = useState(10);
   const [eventList, setEventList] = useState(events);
+
   const startDate = new Date(eventList[0].start).getTime();
   const dayInMs = 1000 * 60 * 60 * 24;
 
@@ -34,6 +35,10 @@ const Timeline = ({ events }) => {
     setEventList(eventList.map(ev => ev.id === event.id ? { ...ev, start: newStartDate.toISOString().split('T')[0], end: newEndDate.toISOString().split('T')[0] } : ev));
   };
 
+  const handleNameChange = (event, newName) => {
+    setEventList(eventList.map(ev => ev.id === event.id ? { ...ev, name: newName } : ev));
+  };
+
   return (
     <div>
       <div className="controls">
@@ -57,7 +62,11 @@ const Timeline = ({ events }) => {
                     width: `${(new Date(event.end).getTime() - new Date(event.start).getTime()) / dayInMs * zoom}px`
                   }}
                 >
-                  {event.name}
+                  <input
+                    type="text"
+                    value={event.name}
+                    onChange={e => handleNameChange(event, e.target.value)}
+                  />
                 </div>
               </Draggable>
             ))}

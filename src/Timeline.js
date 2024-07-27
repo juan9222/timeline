@@ -5,6 +5,8 @@ import './Timeline.css';
 const Timeline = ({ events }) => {
   const [zoom, setZoom] = useState(10); // Default zoom level
   const [eventList, setEventList] = useState(events);
+  const [editingEventId, setEditingEventId] = useState(null);
+  const [editedName, setEditedName] = useState('');
 
   const startDate = new Date(eventList[0].start).getTime();
   const dayInMs = 1000 * 60 * 60 * 24;
@@ -39,8 +41,20 @@ const Timeline = ({ events }) => {
     setEventList(eventList.map(ev => ev.id === event.id ? { ...ev, start: newStartDate.toISOString().split('T')[0], end: newEndDate.toISOString().split('T')[0] } : ev));
   };
 
-  const handleNameChange = (event, newName) => {
-    setEventList(eventList.map(ev => ev.id === event.id ? { ...ev, name: newName } : ev));
+  const handleEdit = (event) => {
+    setEditingEventId(event.id);
+    setEditedName(event.name);
+  };
+
+  const handleSave = (event) => {
+    setEventList(eventList.map(ev => ev.id === event.id ? { ...ev, name: editedName } : ev));
+    setEditingEventId(null);
+    setEditedName('');
+  };
+
+  const handleCancel = () => {
+    setEditingEventId(null);
+    setEditedName('');
   };
 
   return (
@@ -66,11 +80,21 @@ const Timeline = ({ events }) => {
                     width: `${(new Date(event.end).getTime() - new Date(event.start).getTime()) / dayInMs * zoom}px`
                   }}
                 >
-                  <input
-                    type="text"
-                    value={event.name}
-                    onChange={e => handleNameChange(event, e.target.value)}
-                  />
+                  {editingEventId === event.id ? (
+                    <div className="edit-container">
+                      <input
+                        type="text"
+                        value={editedName}
+                        onChange={e => setEditedName(e.target.value)}
+                      />
+                      <button onClick={() => handleSave(event)}>Save</button>
+                      <button onClick={handleCancel}>Cancel</button>
+                    </div>
+                  ) : (
+                    <span onDoubleClick={() => handleEdit(event)}>
+                      {event.name}
+                    </span>
+                  )}
                 </div>
               </Draggable>
             ))}

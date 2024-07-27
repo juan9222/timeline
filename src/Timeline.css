@@ -69,3 +69,23 @@
     outline: none;
   }
   
+  .edit-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .edit-container button {
+    margin-left: 5px;
+    padding: 2px 5px;
+    background-color: #fff;
+    color: #4285f4;
+    border: 1px solid #4285f4;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .edit-container button:hover {
+    background-color: #f1f1f1;
+  }
+  

@@ -1,91 +1,111 @@
+.timeline-container {
+  position: relative;
+  width: 100%;
+  border: 1px solid #ddd;
+  overflow-x: auto;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.controls button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.controls button:hover {
+  background-color: #357ae8;
+}
+
+.date-scale {
+  position: relative;
+  height: 20px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ddd;
+}
+
+.date-scale-item {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
 .timeline {
-    position: relative;
-    width: 100%;
-    border: 1px solid #ddd;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .controls {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .controls button {
-    margin: 0 5px;
-    padding: 5px 10px;
-    background-color: #4285f4;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .controls button:hover {
-    background-color: #357ae8;
-  }
-  
-  .lane {
-    display: flex;
-    position: relative;
-    height: 40px;
-    margin: 10px 0;
-    align-items: center;
-  }
-  
-  .event {
-    position: absolute;
-    height: 100%;
-    background-color: #4285f4;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 4px;
-    box-sizing: border-box;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    cursor: grab;
-    display: flex;
-    align-items: center;
-  }
-  
-  .event:active {
-    cursor: grabbing;
-  }
-  
-  .event input {
-    background: transparent;
-    border: none;
-    color: #fff;
-    width: calc(100% - 20px);
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    outline: none;
-  }
-  
-  .edit-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .edit-container button {
-    margin-left: 5px;
-    padding: 2px 5px;
-    background-color: #fff;
-    color: #4285f4;
-    border: 1px solid #4285f4;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .edit-container button:hover {
-    background-color: #f1f1f1;
-  }
-  
+  position: relative;
+  width: 100%;
+}
+
+.lane {
+  display: flex;
+  position: relative;
+  height: 40px;
+  margin: 10px 0;
+  align-items: center;
+}
+
+.event {
+  position: absolute;
+  height: 100%;
+  background-color: #4285f4;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+}
+
+.event:active {
+  cursor: grabbing;
+}
+
+.event input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  width: calc(100% - 20px);
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.edit-container {
+  display: flex;
+  align-items: center;
+}
+
+.edit-container button {
+  margin-left: 5px;
+  padding: 2px 5px;
+  background-color: #fff;
+  color: #4285f4;
+  border: 1px solid #4285f4;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-container button:hover {
+  background-color: #f1f1f1;
+}
